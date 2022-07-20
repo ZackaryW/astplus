@@ -13,9 +13,6 @@ setup(
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
-    install_requires=[
-        'ast',
-    ],
     author='Zackary W',
     description='ast-plus is an extension to ast that allows easier modification of ast nodes',
     url='https://github.com/ZackaryW/astplus',
