@@ -3,7 +3,7 @@ import unittest
 from astplus import AstWrapper, ValNotString
 from astplus.ext import AstPlusFunc
 
-class t_ext_arg(unittest.TestCase):
+class t_ext(unittest.TestCase):
     def test_1(self):
         self.awrapper = AstWrapper.fromModule('tests.src.a')
         for x in self.awrapper.visitor.visit_FunctionDef():
@@ -11,6 +11,9 @@ class t_ext_arg(unittest.TestCase):
         
         ax = AstPlusFunc(x)
         print(ax.name)
+        # change name
+        ax.name = "newname"
+
 
         kwargs = ax.kwargs
         turn_keys = []

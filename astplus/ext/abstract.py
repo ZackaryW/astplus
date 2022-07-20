@@ -1,10 +1,13 @@
 import ast
 from dataclasses import dataclass
-import dataclasses
 import typing
 
 @dataclass(frozen=True)
 class AstPlusUniversal:
+    """
+    a more readable ast object that can be used to modify and traverse the ast
+    """
+
     astObj : ast.AST
     parent : ast.AST = None
 

@@ -2,11 +2,22 @@ import ast
 import typing
 
 class AstVisitor(ast.NodeVisitor):
+    """
+    a generic visitor for ast nodes
+
+    """
+
     def __init__(self, node : ast.AST) -> None:
         super().__init__()
         self._node = node
 
     def __getattribute__(self, name: str):
+        """
+        getattr behaves as normal except for visit_[name]
+
+        in such cases, it will return _visit_generic generator
+        """
+
         if not name.startswith('visit_'):
             return super().__getattribute__(name)
 
@@ -69,6 +80,10 @@ class AstVisitor(ast.NodeVisitor):
                     yield child
 
     def visit(self, target :str = "body"):
+        """
+        visit the node by target attribute
+        """
+
         node = getattr(self._node, target, None)
         if node is None or not isinstance(node, typing.Iterable):
             return

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import typing
 from astplus.creator import AstCreator
-from astplus.extAbstract import AstPlusInterface, AstPlusUniversal
+from astplus.ext.abstract import AstPlusInterface, AstPlusUniversal
 import ast
 
 @dataclass(frozen=True)

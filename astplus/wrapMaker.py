@@ -3,6 +3,10 @@ import typing
 import ast
 
 class AstWrapperBuilder:
+    """
+    a factory class used to create child wrappers
+    """
+
     def __init__(self, base):
         self._base = base
         self._baseType = type(base)

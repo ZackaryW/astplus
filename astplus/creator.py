@@ -4,7 +4,15 @@ from re import L
 import typing
 
 class AstCreator:
+    """
+    this class does not have any associated methods except for grouping all the ast creation methods
+    """
+
     class NotString:
+        """
+        this class is used to represent a value that is not a string
+        """
+
         def __init__(self, value) -> None:
             self.value = value
 
@@ -24,8 +32,8 @@ class AstCreator:
             return str(val)
     
     @staticmethod
-    def create_new_node(string : str) -> ast.AST:
-        return ast.parse(string, mode="exec").body[0]
+    def create_new_node(string : str, mode = "eval") -> ast.AST:
+        return ast.parse(string, mode=mode).body[0]
 
     @staticmethod
     def create_new_decorater(name : str, *args,vararg = None, kwvarg= None,  **kwargs) -> ast.Call:

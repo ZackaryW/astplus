@@ -1,7 +1,7 @@
+from functools import cached_property
 from astplus.ext.arg import AstPlusArg
-from astplus.extAbstract import AstPlusInterface
+from astplus.ext.abstract import AstPlusInterface
 import ast
-from astplus.extAbstract.utils import ensureProperty
 
 class AstPlusFunc(AstPlusInterface):
     def __post_init__(self):
@@ -18,10 +18,9 @@ class AstPlusFunc(AstPlusInterface):
     def name(self, value):
         self.astObj.name = value
 
-    @property
-    @ensureProperty(AstPlusArg.fromFunc)
+    @cached_property
     def kwargs(self):
-        return self._kwargs
+        return AstPlusArg.fromFunc(self.astObj)
 
     @property
     def decorators(self):

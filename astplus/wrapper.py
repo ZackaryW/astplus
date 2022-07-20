@@ -62,10 +62,18 @@ class AstWrapper(metaclass=AstWrapperMeta):
 
     @property
     def astObject(self):
+        """
+        returns the ast object
+        """
+
         return self._ast
 
     @property
-    def sourcelines(self):
+    def sourcelines(self) -> typing.List[str]:
+        """
+        Returns:
+            typing.List[str]: source lines of the ast object
+        """
         return ast.unparse(self._ast).split('\n')
 
     @property
@@ -83,6 +91,10 @@ class AstWrapper(metaclass=AstWrapperMeta):
         self.__class__.blowChildren(self)
 
     def builtinTransform(self, transformer : typing.Union[ast.NodeTransformer, type]):
+        """
+        applies an inplace transformation to the ast object
+        """
+
         if isinstance(transformer, type) and issubclass(transformer, ast.NodeTransformer):
             transformer = transformer()
         if not isinstance(transformer, ast.NodeTransformer):
